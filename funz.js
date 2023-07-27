@@ -39,6 +39,8 @@ function joins(message) {
     connection;
     ok = create_embed(0xff00ff, "VoiceConnection", "bot is connect")
     message.channel.send({ embeds: [ok] });
+
+    return connection;
 }
 
 function exits(message) {
