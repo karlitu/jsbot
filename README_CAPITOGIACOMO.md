@@ -10,3 +10,5 @@ quindi comprende trovare il modo di passare titolo ed autore a qualche api che c
 
 - playnow()
 il bot in python riceve il comando e appena finisce la canzone che sta andando in questo momento mette quella che viene specificata, senza aspettare che vada infondo alla coda.
+
+questo tutorial sembra carino ma effettivamente non l'ho provato --> https://gabrieltanner.org/blog/dicord-music-bot/
