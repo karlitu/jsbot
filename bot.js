@@ -16,39 +16,27 @@ const {
 } = require('@discordjs/voice');
 
 
-
 client.login(token)
 client.on("ready", () => {
-    console.log("online")
-    let connection = null;
-    let ok = null
+    console.log("online") 
     
     client.on("messageCreate", async msg => {
         let message = msg.content;
         if (message.startsWith('§')){
-            message = message.substring(1);
-            switch (message) {
+            command = f.split_arg(message)
+            console.log(command);
+            switch (command[0]) {
                 case "join":
-                    console.log("joined");
-                    const channel = msg.member.voice.channel;
-                    connection = joinVoiceChannel({
-                        channelId: channel.id,
-                        guildId: channel.guild.id,
-                        adapterCreator: channel.guild.voiceAdapterCreator,
-                    });
-                    ok = f.create_embed(0xff00ff, "VoiceConnection", "bot is connect")
-                    msg.channel.send({ embeds: [ok] });
-                    connection;
+                    console.log("joins");
+                    f.joins(msg);
                     break;
                 case "exit":
                     console.log("exit");
-                    ok = f.create_embed(0xff00ff, "VoiceConnection", "bot is disconnect")
-                    msg.channel.send({ embeds: [ok] });
-                    connection.destroy();
-                        break;
+                    f.exits(msg);
+                    break;
                 default:
                     break;
-            }    
+            }
         }
     });
 })
