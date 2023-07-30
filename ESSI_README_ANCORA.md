@@ -11,4 +11,11 @@ quindi comprende trovare il modo di passare titolo ed autore a qualche api che c
 - playnow()-> play() e pace oppure creare coda seriamente
 il bot in python riceve il comando e appena finisce la canzone che sta andando in questo momento mette quella che viene specificata, senza aspettare che vada infondo alla coda.
 
-questo tutorial sembra carino ma effettivamente non l'ho provato --> https://gabrieltanner.org/blog/dicord-music-bot/
+#TITOLO GRANDE COSì NON LO MISSI
+fai:
+npm install discord.js@v14
+npm uninstall @discordjs/builders @discordjs/formatters @discordjs/rest discord-api-types
+npm i install ffmpeg
+
+e questo è il link con le cose che cambiano
+https://discordjs.guide/additional-info/changes-in-v14.html#enum-values
