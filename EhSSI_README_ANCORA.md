@@ -16,5 +16,6 @@ fai:
 - npm install discord.js@v14
 - npm uninstall @discordjs/builders @discordjs/formatters @discordjs/rest discord-api-types
 - npm i install ffmpeg
-e questo è il link con le cose che cambiano
+e questo è il link con le cose che cambiano e/o se mi sono dimenticata qualcosa
 https://discordjs.guide/additional-info/changes-in-v14.html#enum-values
+e no, non ho fatto le funzioni
