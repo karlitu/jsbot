@@ -1,16 +1,15 @@
 "use strict";
 const {Client, Discord} = require("discord.js");
-const {MessageEmbed} = require("discord.js");
-let connection = null;
-let ok = null;
-
+const {EmbedBuilder} = require("discord.js");
 const { 
     joinVoiceChannel,
 } = require('@discordjs/voice');
+//let connection = null;
+let ok = null;
 
 
 function create_embed(color, title, description) {
-    const emb = new MessageEmbed()
+    const emb = new EmbedBuilder()
     .setColor(color)
     .setTitle(title)
     .setDescription(description)
@@ -31,19 +30,19 @@ function create_embed(color, title, description) {
 
 function joins(message) {
     const channel = message.member.voice.channel;
-    connection = joinVoiceChannel({
+    const connection = joinVoiceChannel  ({
         channelId: channel.id,
         guildId: channel.guild.id,
         adapterCreator: channel.guild.voiceAdapterCreator,
     });
-    connection;
+    console.log("connection");
     ok = create_embed(0xff00ff, "VoiceConnection", "bot is connect")
     message.channel.send({ embeds: [ok] });
 
     return connection;
 }
 
-function exits(message) {
+function exits(message, connection) {
     ok = create_embed(0xff00ff, "VoiceConnection", "bot is disconnect")
     message.channel.send({ embeds: [ok] });
     connection.destroy();
