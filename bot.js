@@ -12,7 +12,7 @@ const client = new Client({
         "MessageContent",
     ]
 });
-const { token } = require('C:\\Users\\user\\OneDrive\\Documenti\\jsbot-main\\config.json');
+const { token } = require('path');
 const {
     prefix
 } = require('./data.json')
