@@ -1,7 +1,4 @@
 const { Client } = require("discord.js");
-const ytdl = require("ytdl-core");
-const ytSearch = require('yt-search');
-const { createAudioPlayer, createAudioResource } = require('@discordjs/voice');
 const f = require("./funz.js");
 const client = new Client({
     intents:[
@@ -12,12 +9,10 @@ const client = new Client({
         "MessageContent",
     ]
 });
-const { token } = require('path');
+const { token } = require('C:\\Users\\user\\OneDrive\\Documenti\\jsbot-main\\config.json');
 const {
     prefix
 } = require('./data.json')
-
-let videoURL = null;
 
 client.login(token)
 client.on("ready", () => {
@@ -36,45 +31,16 @@ client.on("ready", () => {
                     console.log("exit");
                     f.exits(msg, connection);
                     break;
-
-                case "test":
-                    connection = f.joins(msg);
-                    connection;
-                    videoURL = 'https://www.youtube.com/watch?v=nCzFtdZpMu8';
-                    ytdl.getInfo(videoURL).then(info => {
-                        console.log('Titolo:', info.videoDetails.title);
-                        console.log('Autore:', info.videoDetails.author.name);
-                        console.log('Durata (secondi):', info.videoDetails.lengthSeconds);
-                        
-                        const stream = ytdl(videoURL, { filter: 'audioonly' });
-                        const resource = createAudioResource(stream, { inlineVolume: true });
-                        resource.volume.setVolume(3);
-                        
-                        const player = createAudioPlayer();
-                        player.play(resource);
-                        connection.subscribe(player);
-                        
-                    });
-                    break;
-
                     case "play":
                         connection = f.joins(msg);
-                        connection;
-                        videoURL = command[1];
-                        ytdl.getInfo(videoURL).then(info => {
-                            console.log('Titolo:', info.videoDetails.title);
-                            console.log('Autore:', info.videoDetails.author.name);
-                            console.log('Durata (secondi):', info.videoDetails.lengthSeconds);
-                        });
-                        const stream = ytdl(videoURL, { filter: 'audioonly' });
-                        const resource = createAudioResource(stream, { inlineVolume: true });
-                        resource.volume.setVolume(3);
-                        
-                        const player = createAudioPlayer();
-                        player.play(resource);
-                        connection.subscribe(player);
+                        try {
+                            connection;
+                        } catch (error) {
+                            console.log("unable to connect")
+                        };
+                        f.songInfo(command[1], msg);
+                        f.playSong(command[1]);
                         break;
-
                 default:
                     break;
             }
